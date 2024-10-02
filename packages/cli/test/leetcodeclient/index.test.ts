@@ -1,7 +1,6 @@
 import { type Client } from "../../src/leetcodeclient/client";
-import { LeetcodeClient, LeetcodeClientError, Type } from "../../src/leetcodeclient";
-import { describe, beforeAll, beforeEach, test, expect, mock, jest, spyOn } from "bun:test";
-import { CombinedError } from "@urql/core";
+import { LeetcodeClient, Type } from "../../src/leetcodeclient";
+import { describe, beforeEach, test, expect } from "bun:test";
 
 describe("Leetcode Client", () => {
     let client: LeetcodeClient;
