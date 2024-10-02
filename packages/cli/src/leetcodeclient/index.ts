@@ -44,8 +44,8 @@ export class LeetcodeClient {
     ) {
     }
 
-    async getQuestion() {
-        const result = await this.client.queryQuestion("two-sum");
+    async getQuestion(title: string) {
+        const result = await this.client.queryQuestion(title);
         if (result.error) {
             throw new LeetcodeClientError(`Get Question Query returned error: ${result.error}`);
         }

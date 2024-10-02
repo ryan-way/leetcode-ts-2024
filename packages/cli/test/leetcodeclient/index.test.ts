@@ -30,7 +30,7 @@ describe("Leetcode Client", () => {
         });
 
         test("should properly map test cases", async () => {
-            const question = await client.getQuestion();
+            const question = await client.getQuestion("two-sum");
             const testcaseList = question.exampleTestcaseList;
             expect(testcaseList).not.toBeNull();
             expect(testcaseList.length).toBe(3);
@@ -38,7 +38,7 @@ describe("Leetcode Client", () => {
         });
 
         test("should properly map meta data", async () => {
-            const question = await client.getQuestion();
+            const question = await client.getQuestion("two-sum");
             const metaData = question.metaData;
 
             expect(metaData).not.toBeNull();
@@ -66,7 +66,7 @@ describe("Leetcode Client", () => {
         });
 
         test("should throw error", () => {
-            expect(client.getQuestion()).rejects.toMatchObject({ message: "Get Question Query empty data" });
+            expect(client.getQuestion("two-sum")).rejects.toMatchObject({ message: "Get Question Query empty data" });
         })
     })
 
@@ -88,7 +88,7 @@ describe("Leetcode Client", () => {
         });
 
         test("should throw error", async () => {
-            expect(client.getQuestion()).rejects.not.toBeNull();
+            expect(client.getQuestion("two-sum")).rejects.not.toBeNull();
         })
     })
 
