@@ -1,7 +1,8 @@
 {
-  "name": "leetcode-ts-2024",
-  "private": true,
-  "workspaces": [
-    "packages/*"
-  ]
+	"name": "leetcode-ts-2024",
+	"private": true,
+	"workspaces": ["packages/*"],
+	"devDependencies": {
+		"@biomejs/biome": "1.9.3"
+	}
 }
