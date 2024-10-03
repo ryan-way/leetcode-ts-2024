@@ -1,5 +1,5 @@
 import {
-	CombinedError,
+	type CombinedError,
 	Client as UrqlClient,
 	fetchExchange,
 	gql,

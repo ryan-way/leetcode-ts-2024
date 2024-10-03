@@ -1,8 +1,8 @@
-import { type Client, type QuestionData } from "./client";
+import type { Client, QuestionData } from "./client";
 
 export enum Type {
-	INTEGER,
-	INTEGER_ARRAY,
+	INTEGER = 0,
+	INTEGER_ARRAY = 1,
 }
 
 export interface Parameter {

@@ -1,6 +1,6 @@
-import { type Client } from "../../src/leetcodeclient/client";
+import { beforeEach, describe, expect, test } from "bun:test";
 import { LeetcodeClient, Type } from "../../src/leetcodeclient";
-import { describe, beforeEach, test, expect } from "bun:test";
+import type { Client } from "../../src/leetcodeclient/client";
 
 describe("Leetcode Client", () => {
 	let client: LeetcodeClient;
