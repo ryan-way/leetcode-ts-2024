@@ -1,16 +1,16 @@
 query GetQuestion($titleSlug: String!) {
-    question(titleSlug: $titleSlug) {
-        categoryTitle
-        codeSnippets {
-            langSlug
-            code
-        }
-        content
-        difficulty
-        exampleTestcaseList
-        metaData
-        questionId
-        title
-        titleSlug
+  question(titleSlug: $titleSlug) {
+    categoryTitle
+    codeSnippets {
+      langSlug
+      code
     }
+    content
+    difficulty
+    exampleTestcaseList
+    metaData
+    questionId
+    title
+    titleSlug
+  }
 }

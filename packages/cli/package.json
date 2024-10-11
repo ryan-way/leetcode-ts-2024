@@ -1,17 +1,17 @@
 {
-	"name": "cli",
-	"module": "src/index.ts",
-	"bin": {
-		"cli": "src/index.ts"
-	},
-	"type": "module",
-	"devDependencies": {
-		"@types/bun": "latest"
-	},
-	"peerDependencies": {
-		"typescript": "^5.0.0"
-	},
-	"dependencies": {
-		"@urql/core": "^5.0.6"
-	}
+  "name": "cli",
+  "module": "src/index.ts",
+  "bin": {
+    "cli": "src/index.ts"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@urql/core": "^5.0.6"
+  }
 }

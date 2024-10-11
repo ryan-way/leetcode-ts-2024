@@ -1,3 +1,1 @@
-function twoSum(nums: number[], target: number): number[] {
-    
-};
+function twoSum(nums: number[], target: number): number[] {}
