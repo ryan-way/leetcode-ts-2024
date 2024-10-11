@@ -1,3 +1,4 @@
+import { CliError } from "../error";
 import type { Client, QuestionData } from "./client";
 
 export enum Type {
@@ -21,24 +22,22 @@ export interface TestCase {
 }
 
 export interface Question {
+	categoryTitle: string;
+	codeSnippet: string;
+	content: string;
+	difficulty: string;
+	exampleTestcaseList: TestCase[];
+	metaData: MetaData;
 	questionId: string;
 	title: string;
 	titleSlug: string;
-	difficulty: string;
-	categoryTitle: string;
-	content: string;
-	exampleTestcaseList: TestCase[];
-	metaData: MetaData;
 }
 
-export class LeetcodeClientError extends Error {
-	constructor(message: string) {
-		super(message);
-	}
+export class LeetcodeClientError extends CliError {
 }
 
 export class LeetcodeClient {
-	constructor(private client: Client) {}
+	constructor(private client: Client) { }
 
 	async getQuestion(title: string) {
 		const result = await this.client.queryQuestion(title);
@@ -60,9 +59,15 @@ export class LeetcodeClient {
 	private mapQuestionData(questionData: QuestionData): Question {
 		const testcaseList = questionData.exampleTestcaseList.map(this.mapTestCase);
 		const metaData = this.mapMetaData(questionData.metaData);
+		const typeScriptSnippet = questionData.codeSnippets.find(value => value.langSlug === "typescript");
+		if (!typeScriptSnippet) {
+			throw new LeetcodeClientError("Typescript code snippet not found");
+		}
 
 		return {
 			...questionData,
+			difficulty: questionData.difficulty.toLocaleLowerCase(),
+			codeSnippet: typeScriptSnippet.code,
 			exampleTestcaseList: testcaseList,
 			metaData,
 		};
