@@ -1,10 +1,10 @@
+import { readdir } from "node:fs/promises";
 import {
   type CombinedError,
   Client as UrqlClient,
   fetchExchange,
   gql,
 } from "@urql/core";
-import { readdir } from "node:fs/promises";
 
 interface QuestionVariables {
   titleSlug: string;
@@ -31,6 +31,21 @@ export interface QuestionData {
   titleSlug: string;
 }
 
+export interface QuestionDataMetaData {
+  name: string;
+  params: QuestionDataMetaDataParameter[];
+  return: QuestionDataMetaDataReturn;
+}
+
+export interface QuestionDataMetaDataReturn {
+  type: string;
+}
+
+export interface QuestionDataMetaDataParameter {
+  name: string;
+  type: string;
+}
+
 interface QueryResult<T> {
   error?: CombinedError;
   data?: T;
@@ -39,7 +54,7 @@ interface QueryResult<T> {
 const QUESTION_QUERY = gql<
   QuestionData,
   QuestionVariables
->`${await Bun.file(import.meta.dir + "/GetQuestion.graphql").text()}`;
+>`${await Bun.file(`${import.meta.dir}/GetQuestion.graphql`).text()}`;
 
 export interface Client {
   queryQuestion(titleSlug: string): Promise<QueryResult<QuestionResponse>>;

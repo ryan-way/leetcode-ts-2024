@@ -1,70 +1,35 @@
-import { resolve } from "path";
-import type { Question } from "../leetcodeclient";
-import { mkdir, exists } from "node:fs/promises";
+import { exists, mkdir } from "node:fs/promises";
+import { resolve } from "node:path";
 import { CliError } from "../error";
-import { Logger } from "tslog";
+import type { Question } from "../leetcodeclient";
+import { logger } from "../util";
 
 export enum Difficulty {
-  Easy,
-  Medium,
-  Hard,
+  Easy = 0,
+  Medium = 1,
+  Hard = 2,
 }
 
 export class FileSystemError extends CliError {}
 
-const logger = new Logger();
-
 export class FileSystem {
-  private static logger = new Logger();
-  private static readonly MINFEST_FILE_NAME = "package.json";
-  private static readonly SOURCE_DIRECTORY_NAME = "src";
-  private static readonly TEST_DIRECTORY_NAME = "test";
-
   static async initialize(cwdDirectory: string): Promise<FileSystem> {
-    const path = resolve(cwdDirectory);
-    logger.info(`Directory ${cwdDirectory} resolved to: ${path}`);
-    const rootDirectory = await this.getRoot(path);
-
-    const sourceDirectory =
-      rootDirectory + FileSystem.SOURCE_DIRECTORY_NAME + "/";
-    if (!(await exists(sourceDirectory))) {
-      throw new FileSystemError(
-        `Source Directory does not exist: ${sourceDirectory}`,
-      );
-    }
-
-    const testDirectory = rootDirectory + FileSystem.TEST_DIRECTORY_NAME + "/";
-    if (!(await exists(testDirectory))) {
-      throw new FileSystemError(
-        `Test Directory does not exist: ${testDirectory}`,
-      );
-    }
-
-    return new FileSystem(sourceDirectory, testDirectory);
-  }
-
-  static async getRoot(directoryName: string): Promise<string> {
-    const split = directoryName.split("/");
-    while (
-      !(await Bun.file(
-        split.join("/") + "/" + this.MINFEST_FILE_NAME,
-      ).exists()) &&
-      split.pop() !== undefined
+    return new FileSystemInitializer(cwdDirectory).initialize(
+      FileSystem.create,
     );
-
-    if (split.length === 0) {
-      throw new FileSystemError(
-        `Could not find root directory from: ${directoryName}`,
-      );
-    }
-
-    return split.join("/") + "/";
   }
 
   private constructor(
-    private sourceDirectory: string,
-    private testDirectory: string,
+    readonly sourceDirectory: string,
+    readonly testDirectory: string,
   ) {}
+
+  private static create(
+    sourceDirectory: string,
+    testDirectory: string,
+  ): FileSystem {
+    return new FileSystem(sourceDirectory, testDirectory);
+  }
 
   async createProblemWorkspace(question: Question): Promise<ProblemWorkspace> {
     const testFile = await this.getFileName(this.testDirectory, question);
@@ -87,8 +52,8 @@ export class FileSystem {
 
 export class ProblemWorkspace {
   constructor(
-    private testFile: string,
-    private srcFile: string,
+    readonly testFile: string,
+    readonly srcFile: string,
     private question: Question,
   ) {}
 
@@ -96,5 +61,61 @@ export class ProblemWorkspace {
 
   async writeSourceFileContents() {
     await Bun.write(this.srcFile, this.question.codeSnippet);
+  }
+}
+
+class FileSystemInitializer {
+  private static readonly MINFEST_FILE_NAME = "package.json";
+  private static readonly SOURCE_DIRECTORY_NAME = "src";
+  private static readonly TEST_DIRECTORY_NAME = "test";
+
+  constructor(private cwdDirectory: string) {}
+
+  async initialize(
+    factoryMethod: (
+      sourceDirectory: string,
+      testDirectory: string,
+    ) => FileSystem,
+  ): Promise<FileSystem> {
+    const path = resolve(this.cwdDirectory);
+    logger.info(`Directory ${this.cwdDirectory} resolved to: ${path}`);
+    const rootDirectory = await this.getRoot(path);
+
+    const sourceDirectory = await this.existsOrThrow(
+      rootDirectory + FileSystemInitializer.SOURCE_DIRECTORY_NAME,
+    );
+
+    const testDirectory = await this.existsOrThrow(
+      rootDirectory + FileSystemInitializer.TEST_DIRECTORY_NAME,
+    );
+
+    return factoryMethod(sourceDirectory, testDirectory);
+  }
+
+  async existsOrThrow(directoryName: string): Promise<string> {
+    const directoryExists = await exists(directoryName);
+    if (!directoryExists) {
+      throw new FileSystemError(`Directory does not exist: ${directoryName}`);
+    }
+
+    return directoryName;
+  }
+
+  async getRoot(directoryName: string): Promise<string> {
+    const split = directoryName.split("/");
+    while (
+      !(await Bun.file(
+        `${split.join("/")}/${FileSystemInitializer.MINFEST_FILE_NAME}`,
+      ).exists()) &&
+      split.pop() !== undefined
+    );
+
+    if (split.length === 0) {
+      throw new FileSystemError(
+        `Could not find root directory from: ${directoryName}`,
+      );
+    }
+
+    return `${split.join("/")}/`;
   }
 }

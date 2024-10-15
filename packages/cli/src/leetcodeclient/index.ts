@@ -1,5 +1,10 @@
 import { CliError } from "../error";
-import type { Client, QuestionData } from "./client";
+import type {
+  Client,
+  QuestionData,
+  QuestionDataMetaData,
+  QuestionDataMetaDataParameter,
+} from "./client";
 
 export enum Type {
   INTEGER = 0,
@@ -47,7 +52,7 @@ export class LeetcodeClient {
     }
 
     if (!result.data) {
-      throw new LeetcodeClientError(`Get Question Query empty data`);
+      throw new LeetcodeClientError("Get Question Query empty data");
     }
 
     const question = this.mapQuestionData(result.data.question);
@@ -81,7 +86,7 @@ export class LeetcodeClient {
   }
 
   private mapMetaData(metaData: string): MetaData {
-    const data = JSON.parse(metaData);
+    const data = JSON.parse(metaData) as QuestionDataMetaData;
     return {
       name: data.name,
       params: data.params.map(this.mapParam.bind(this)),
@@ -89,14 +94,14 @@ export class LeetcodeClient {
     };
   }
 
-  private mapParam(param: any): Parameter {
+  private mapParam(param: QuestionDataMetaDataParameter): Parameter {
     return {
       name: param.name,
       type: this.mapType(param.type),
     };
   }
 
-  private mapType(type: any): Type {
+  private mapType(type: string): Type {
     switch (type) {
       case "integer":
         return Type.INTEGER;

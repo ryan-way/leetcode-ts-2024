@@ -1,2 +1,2 @@
-# bunx biome check
-# bun test
+bunx biome check
+bun test

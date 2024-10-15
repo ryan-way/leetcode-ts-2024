@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 
-import { LeetcodeClient } from "./leetcodeclient";
 import { FileSystem } from "./filesystem";
+import { LeetcodeClient } from "./leetcodeclient";
 import { GraphQlClient } from "./leetcodeclient/client";
 
 export class Cli {
