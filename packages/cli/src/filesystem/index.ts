@@ -69,9 +69,9 @@ import { describe, expect, test } from "bun:test";
 describe("${this.question.title}", () => {
   test("example 1", () => {
     expect(2).toBe(3);
-  })
+  });
 
-})
+});
     `;
 
     return Bun.write(this.testFile, snippet);
@@ -79,7 +79,10 @@ describe("${this.question.title}", () => {
 
   async writeSourceFileContents() {
     log.info("Writing source file contents");
-    await Bun.write(this.srcFile, `export ${this.question.codeSnippet}`);
+    await Bun.write(
+      this.srcFile,
+      this.question.codeSnippet.replace("function", "export function"),
+    );
   }
 }
 

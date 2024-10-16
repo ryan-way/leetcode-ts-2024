@@ -171,7 +171,7 @@ describe("Problem workspace", () => {
       .mockImplementation(() => Promise.resolve(0));
     const question: Question = {
       categoryTitle: "test-category",
-      codeSnippet: "test snippet",
+      codeSnippet: "function test snippet",
       content: "test content",
       difficulty: "easy",
       exampleTestcaseList: [],
@@ -193,7 +193,7 @@ describe("Problem workspace", () => {
     await problemWorkspace.writeSourceFileContents();
 
     expect(mock).toBeCalledTimes(1);
-    expect(mock).toBeCalledWith("srcFile", "export test snippet");
+    expect(mock).toBeCalledWith("srcFile", "export function test snippet");
 
     await problemWorkspace.writeTestFileContents();
     expect(mock).toBeCalledTimes(2);
