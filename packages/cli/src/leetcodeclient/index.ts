@@ -10,6 +10,7 @@ import type {
 export enum Type {
   INTEGER = 0,
   INTEGER_ARRAY = 1,
+  INTEGER_2D_ARRAY = 2,
 }
 
 export interface Parameter {
@@ -112,6 +113,8 @@ export class LeetcodeClient {
         return Type.INTEGER;
       case "integer[]":
         return Type.INTEGER_ARRAY;
+      case "list<list<integer>>":
+        return Type.INTEGER_2D_ARRAY;
       default:
         throw new LeetcodeClientError(`Unsupported type: ${type}`);
     }
