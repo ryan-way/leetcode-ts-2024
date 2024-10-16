@@ -30,7 +30,7 @@ Repo for source controlling leetcode problems
   - [] Easy:
     1. [x] [Two Sum](https://leetcode.com/problems/two-sum/description/)
     1. [x] [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
-    1. [] [link]()
+    1. [x] [Remove Element](https://leetcode.com/problems/remove-element/)
     1. [] [link]()
     1. [] [link]()
   - [] Medium:
