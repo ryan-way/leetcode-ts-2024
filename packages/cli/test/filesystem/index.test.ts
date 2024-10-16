@@ -193,6 +193,9 @@ describe("Problem workspace", () => {
     await problemWorkspace.writeSourceFileContents();
 
     expect(mock).toBeCalledTimes(1);
-    expect(mock).toBeCalledWith("srcFile", "test snippet");
+    expect(mock).toBeCalledWith("srcFile", "export test snippet");
+
+    await problemWorkspace.writeTestFileContents();
+    expect(mock).toBeCalledTimes(2);
   });
 });

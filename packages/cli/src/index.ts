@@ -3,6 +3,9 @@
 import { FileSystem } from "./filesystem";
 import { LeetcodeClient } from "./leetcodeclient";
 import { GraphQlClient } from "./leetcodeclient/client";
+import { logger } from "./util";
+
+const log = logger.getSubLogger({ name: "Main" });
 
 export class Cli {
   constructor(
@@ -15,18 +18,20 @@ export class Cli {
     const problemWorkspace =
       await this.fileSystem.createProblemWorkspace(question);
     await problemWorkspace.writeSourceFileContents();
+    await problemWorkspace.writeTestFileContents();
   }
 }
 
 async function main() {
-  console.log("Starting...");
+  logger.settings.minLevel = 0;
+  log.info("Starting...");
   const title = Bun.argv[2];
   const fileSystem = await FileSystem.initialize("./");
   const client = new GraphQlClient();
   const lcClient = new LeetcodeClient(client);
   const cli = new Cli(fileSystem, lcClient);
   await cli.run(title);
+  log.info("Done!");
 }
 
-console.log("Starting...");
 await main();

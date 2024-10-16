@@ -12,8 +12,11 @@ export enum Difficulty {
 
 export class FileSystemError extends CliError {}
 
+const log = logger.getSubLogger({ name: "FileSystem" });
+
 export class FileSystem {
   static async initialize(cwdDirectory: string): Promise<FileSystem> {
+    log.info("Initalizing file system");
     return new FileSystemInitializer(cwdDirectory).initialize(
       FileSystem.create,
     );
@@ -32,6 +35,7 @@ export class FileSystem {
   }
 
   async createProblemWorkspace(question: Question): Promise<ProblemWorkspace> {
+    log.info("Creating problem workspace");
     const testFile = await this.getFileName(this.testDirectory, question);
     const srcFile = await this.getFileName(this.sourceDirectory, question);
     return new ProblemWorkspace(testFile, srcFile, question);
@@ -57,10 +61,25 @@ export class ProblemWorkspace {
     private question: Question,
   ) {}
 
-  writeTestFileContents() {}
+  async writeTestFileContents() {
+    log.info("Writing test file contents");
+    const snippet = `
+import { describe, expect, test } from "bun:test";
+
+describe("${this.question.title}", () => {
+  test("example 1", () => {
+    expect(2).toBe(3);
+  })
+
+})
+    `;
+
+    return Bun.write(this.testFile, snippet);
+  }
 
   async writeSourceFileContents() {
-    await Bun.write(this.srcFile, this.question.codeSnippet);
+    log.info("Writing source file contents");
+    await Bun.write(this.srcFile, `export ${this.question.codeSnippet}`);
   }
 }
 
@@ -78,7 +97,7 @@ class FileSystemInitializer {
     ) => FileSystem,
   ): Promise<FileSystem> {
     const path = resolve(this.cwdDirectory);
-    logger.info(`Directory ${this.cwdDirectory} resolved to: ${path}`);
+    log.info(`Directory ${this.cwdDirectory} resolved to: ${path}`);
     const rootDirectory = await this.getRoot(path);
 
     const sourceDirectory = await this.existsOrThrow(
@@ -89,6 +108,7 @@ class FileSystemInitializer {
       rootDirectory + FileSystemInitializer.TEST_DIRECTORY_NAME,
     );
 
+    log.info("File system validated");
     return factoryMethod(sourceDirectory, testDirectory);
   }
 

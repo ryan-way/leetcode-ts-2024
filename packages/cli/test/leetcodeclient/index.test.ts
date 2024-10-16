@@ -1,14 +1,9 @@
-import { beforeAll, beforeEach, describe, expect, mock, test } from "bun:test";
+import { beforeEach, describe, expect, test } from "bun:test";
 import { LeetcodeClient, Type } from "../../src/leetcodeclient";
 import type { Client } from "../../src/leetcodeclient/client";
-import { logger } from "../../src/util";
 
 describe("Leetcode Client", () => {
   let client: LeetcodeClient;
-
-  beforeAll(() => {
-    logger.settings.minLevel = 10;
-  });
 
   describe("on receiving valid question response", () => {
     beforeEach(() => {

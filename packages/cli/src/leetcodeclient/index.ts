@@ -1,4 +1,5 @@
 import { CliError } from "../error";
+import { logger } from "../util";
 import type {
   Client,
   QuestionData,
@@ -40,10 +41,13 @@ export interface Question {
 
 export class LeetcodeClientError extends CliError {}
 
+const log = logger.getSubLogger({ name: "LeetCodeClient" });
+
 export class LeetcodeClient {
   constructor(private client: Client) {}
 
   async getQuestion(title: string) {
+    log.info(`Getting question: ${title}`);
     const result = await this.client.queryQuestion(title);
     if (result.error) {
       throw new LeetcodeClientError(
@@ -55,6 +59,7 @@ export class LeetcodeClient {
       throw new LeetcodeClientError("Get Question Query empty data");
     }
 
+    log.info("Mapping question data");
     const question = this.mapQuestionData(result.data.question);
 
     return question;

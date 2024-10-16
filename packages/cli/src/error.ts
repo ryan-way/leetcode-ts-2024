@@ -1,8 +1,10 @@
 import { logger } from "./util";
 
+const log = logger.getSubLogger({ name: "Error" });
+
 export class CliError extends Error {
   constructor(message: string) {
-    logger.error(message);
+    log.error(message);
     super(message);
   }
 }
