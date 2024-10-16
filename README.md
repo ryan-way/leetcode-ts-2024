@@ -27,14 +27,14 @@ Repo for source controlling leetcode problems
 ## Topics
 
 - [] Array
-  - [] Easy:
+  - [x] Easy:
     1. [x] [Two Sum](https://leetcode.com/problems/two-sum/description/)
     1. [x] [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
     1. [x] [Remove Element](https://leetcode.com/problems/remove-element/)
-    1. [] [Search Insert Position](https://leetcode.com/problems/search-insert-position/description/)
-    1. [] [Plus One](https://leetcode.com/problems/plus-one/description/)
+    1. [x] [Search Insert Position](https://leetcode.com/problems/search-insert-position/description/)
+    1. [x] [Plus One](https://leetcode.com/problems/plus-one/description/)
   - [] Medium:
-    1. [] [link]()
+    1. [] [Container With Most Water](https://leetcode.com/problems/container-with-most-water/submissions/)
     1. [] [link]()
     1. [] [link]()
     1. [] [link]()
