@@ -35,8 +35,8 @@ Repo for source controlling leetcode problems
     1. [x] [Plus One](https://leetcode.com/problems/plus-one/description/)
   - [] Medium:
     1. [x] [Container With Most Water](https://leetcode.com/problems/container-with-most-water/submissions/)
-    1. [] [3Sum](https://leetcode.com/problems/3sum/submissions/)
-    1. [] [link]()
+    1. [x] [3Sum](https://leetcode.com/problems/3sum/submissions/)
+    1. [x] [Next Permutation](https://leetcode.com/problems/next-permutation/description/)
     1. [] [link]()
     1. [] [link]()
 - [] String
