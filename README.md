@@ -41,7 +41,7 @@ Repo for source controlling leetcode problems
     1. [x] [Find First and Last Position of Element](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
 - [] String
   - [] Easy:
-    1. [] [link]()
+    1. [x] [Roman to Integer](https://leetcode.com/problems/roman-to-integer/description/)
     1. [] [link]()
     1. [] [link]()
     1. [] [link]()
