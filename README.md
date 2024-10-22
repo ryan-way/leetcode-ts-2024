@@ -26,7 +26,7 @@ Repo for source controlling leetcode problems
 
 ## Topics
 
-- [] Array
+- [x] Array
   - [x] Easy:
     1. [x] [Two Sum](https://leetcode.com/problems/two-sum/description/)
     1. [x] [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
@@ -37,8 +37,8 @@ Repo for source controlling leetcode problems
     1. [x] [Container With Most Water](https://leetcode.com/problems/container-with-most-water/submissions/)
     1. [x] [3Sum](https://leetcode.com/problems/3sum/submissions/)
     1. [x] [Next Permutation](https://leetcode.com/problems/next-permutation/description/)
-    1. [] [link]()
-    1. [] [link]()
+    1. [x] [Search In Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+    1. [x] [Find First and Last Position of Element](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
 - [] String
   - [] Easy:
     1. [] [link]()
