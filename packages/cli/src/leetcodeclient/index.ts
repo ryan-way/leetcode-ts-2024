@@ -14,6 +14,7 @@ export enum Type {
   VOID = 3,
   STRING = 4,
   STRING_ARRAY = 5,
+  BOOLEAN = 6,
 }
 
 export interface Parameter {
@@ -124,6 +125,8 @@ export class LeetcodeClient {
         return Type.STRING;
       case "string[]":
         return Type.STRING_ARRAY;
+      case "boolean":
+        return Type.BOOLEAN;
       default:
         throw new LeetcodeClientError(`Unsupported type: ${type}`);
     }
