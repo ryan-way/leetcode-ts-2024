@@ -44,7 +44,7 @@ Repo for source controlling leetcode problems
     1. [x] [Roman to Integer](https://leetcode.com/problems/roman-to-integer/description/)
     1. [x] [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/)
     1. [x] [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)
-    1. [] [link]()
+    1. [x] [Find the Index of the first occurence in a string](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/)
     1. [] [link]()
   - [] Medium:
     1. [] [link]()
