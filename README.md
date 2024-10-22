@@ -42,7 +42,7 @@ Repo for source controlling leetcode problems
 - [] String
   - [] Easy:
     1. [x] [Roman to Integer](https://leetcode.com/problems/roman-to-integer/description/)
-    1. [] [link]()
+    1. [x] [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/)
     1. [] [link]()
     1. [] [link]()
     1. [] [link]()
