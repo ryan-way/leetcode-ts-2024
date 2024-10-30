@@ -40,14 +40,14 @@ Repo for source controlling leetcode problems
     1. [x] [Search In Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
     1. [x] [Find First and Last Position of Element](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
 - [] String
-  - [] Easy:
+  - [x] Easy:
     1. [x] [Roman to Integer](https://leetcode.com/problems/roman-to-integer/description/)
     1. [x] [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/)
     1. [x] [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)
     1. [x] [Find the Index of the first occurence in a string](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/)
     1. [x] [Length of last word](https://leetcode.com/problems/length-of-last-word/)
   - [] Medium:
-    1. [] [link]()
+    1. [x] [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
     1. [] [link]()
     1. [] [link]()
     1. [] [link]()
