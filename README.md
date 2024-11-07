@@ -48,8 +48,8 @@ Repo for source controlling leetcode problems
     1. [x] [Length of last word](https://leetcode.com/problems/length-of-last-word/)
   - [] Medium:
     1. [x] [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
-    1. [] [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
-    1. [] [link]()
+    1. [x] [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
+    1. [x] [Zigzag Conversion](https://leetcode.com/problems/zigzag-conversion/)
     1. [] [link]()
     1. [] [link]()
 - [] Hash Table
