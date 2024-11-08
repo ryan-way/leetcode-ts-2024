@@ -194,8 +194,34 @@ describe("Problem workspace", () => {
 
     expect(mock).toBeCalledTimes(1);
     expect(mock).toBeCalledWith("srcFile", "export function test snippet");
+  });
+  test("should create test file correctly", async () => {
+    const mock = spyOn(Bun, "write")
+      .mockReset()
+      .mockImplementation(() => Promise.resolve(0));
+    const question: Question = {
+      categoryTitle: "test-category",
+      codeSnippet: "function test snippet",
+      content: "test content",
+      difficulty: "easy",
+      exampleTestcaseList: [{ input: "test input 1", output: "test output 1" }],
+      metaData: {
+        name: "test meta data name",
+        params: [],
+        return: Type.INTEGER,
+      },
+      questionId: "test-question",
+      title: "test-title",
+      titleSlug: "test-slug",
+    };
+    const problemWorkspace = new ProblemWorkspace(
+      "testFile",
+      "srcFile",
+      question,
+    );
 
     await problemWorkspace.writeTestFileContents();
-    expect(mock).toBeCalledTimes(2);
+
+    expect(mock).toBeCalledTimes(1);
   });
 });

@@ -63,15 +63,22 @@ export class ProblemWorkspace {
 
   async writeTestFileContents() {
     log.info("Writing test file contents");
-    const snippet = `
+    let snippet = `
 import { describe, expect, test } from "bun:test";
+import { ${this.question.metaData.name} } from "../../src/${this.question.difficulty}/${this.question.titleSlug}";
 
-describe("${this.question.title}", () => {
-  test("example 1", () => {
-    expect(2).toBe(3);
+describe("${this.question.title}", () => {`;
+    snippet += this.question.exampleTestcaseList
+      .map((testCase, idx) => {
+        return `
+  test("example ${idx + 1}", () => {
+    expect(${this.question.metaData.name}(${testCase.input})).toBe(${testCase.output});
   });
+`;
+      })
+      .join("");
 
-});
+    snippet += `});
     `;
 
     return Bun.write(this.testFile, snippet);

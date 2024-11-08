@@ -46,9 +46,9 @@ describe("Leetcode Client", () => {
       const testcaseList = question.exampleTestcaseList;
       expect(testcaseList).not.toBeNull();
       expect(testcaseList.length).toBe(3);
-      expect(
-        testcaseList.every((testcase) => testcase.input.length === 2),
-      ).toBeTruthy();
+      expect(testcaseList[0].input).toEqual("[2,7,11,15], 9");
+      expect(testcaseList[1].input).toEqual("[3,2,4], 6");
+      expect(testcaseList[2].input).toEqual("[3,3], 6");
     });
 
     test("should properly map meta data", async () => {

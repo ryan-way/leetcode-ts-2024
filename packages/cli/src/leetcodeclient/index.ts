@@ -29,7 +29,8 @@ export interface MetaData {
 }
 
 export interface TestCase {
-  input: string[];
+  input: string;
+  output: string;
 }
 
 export interface Question {
@@ -64,14 +65,15 @@ export class LeetcodeClient {
       throw new LeetcodeClientError("Get Question Query empty data");
     }
 
-    log.info("Mapping question data");
     const question = this.mapQuestionData(result.data.question);
 
+    log.info("Content", question.content);
+    log.info("Test case", question.exampleTestcaseList);
     return question;
   }
 
   private mapQuestionData(questionData: QuestionData): Question {
-    const testcaseList = questionData.exampleTestcaseList.map(this.mapTestCase);
+    const testcaseList = this.getTestCaseList(questionData.content);
     const metaData = this.mapMetaData(questionData.metaData);
     const typeScriptSnippet = questionData.codeSnippets.find(
       (value) => value.langSlug === "typescript",
@@ -89,10 +91,28 @@ export class LeetcodeClient {
     };
   }
 
-  private mapTestCase(testCase: string): TestCase {
-    return {
-      input: testCase.split("\n"),
-    };
+  private getTestCaseList(content: string): TestCase[] {
+    const inputs = content
+      .split("\n")
+      .filter((line) => line.includes("Input:"))
+      .map((line) =>
+        line
+          .replace("<strong>Input:</strong> ", "")
+          .replaceAll("&quot;", '"')
+          .replaceAll(/\w+ = /g, ""),
+      );
+    log.info("Input", inputs);
+    const outputs = content
+      .split("\n")
+      .filter((line) => line.includes("Output:"))
+      .map((line) =>
+        line.replace("<strong>Output:</strong> ", "").replaceAll("&quot;", '"'),
+      );
+    log.info("Output", outputs);
+
+    return inputs.map((input, idx) => {
+      return { input, output: outputs[idx] };
+    });
   }
 
   private mapMetaData(metaData: string): MetaData {
@@ -124,6 +144,7 @@ export class LeetcodeClient {
       case "string":
         return Type.STRING;
       case "string[]":
+      case "list<string>":
         return Type.STRING_ARRAY;
       case "boolean":
         return Type.BOOLEAN;
