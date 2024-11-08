@@ -55,7 +55,7 @@ Repo for source controlling leetcode problems
 - [] Hash Table
   - [] Easy:
     1. [x] [Majority Element](https://leetcode.com/problems/majority-element/description/)
-    1. [] [link]()
+    1. [x] [Happy Number](https://leetcode.com/problems/happy-number/description/)
     1. [] [link]()
     1. [] [link]()
     1. [] [link]()
