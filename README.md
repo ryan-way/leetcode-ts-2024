@@ -56,7 +56,7 @@ Repo for source controlling leetcode problems
   - [] Easy:
     1. [x] [Majority Element](https://leetcode.com/problems/majority-element/description/)
     1. [x] [Happy Number](https://leetcode.com/problems/happy-number/description/)
-    1. [] [link]()
+    1. [x] [Isomorphic Strings](https://leetcode.com/problems/isomorphic-strings/description/)
     1. [] [link]()
     1. [] [link]()
   - [] Medium:
