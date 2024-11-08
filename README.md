@@ -33,20 +33,20 @@ Repo for source controlling leetcode problems
     1. [x] [Remove Element](https://leetcode.com/problems/remove-element/)
     1. [x] [Search Insert Position](https://leetcode.com/problems/search-insert-position/description/)
     1. [x] [Plus One](https://leetcode.com/problems/plus-one/description/)
-  - [] Medium:
+  - [x] Medium:
     1. [x] [Container With Most Water](https://leetcode.com/problems/container-with-most-water/submissions/)
     1. [x] [3Sum](https://leetcode.com/problems/3sum/submissions/)
     1. [x] [Next Permutation](https://leetcode.com/problems/next-permutation/description/)
     1. [x] [Search In Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
     1. [x] [Find First and Last Position of Element](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
-- [] String
+- [x] String
   - [x] Easy:
     1. [x] [Roman to Integer](https://leetcode.com/problems/roman-to-integer/description/)
     1. [x] [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/)
     1. [x] [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)
     1. [x] [Find the Index of the first occurence in a string](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/)
     1. [x] [Length of last word](https://leetcode.com/problems/length-of-last-word/)
-  - [] Medium:
+  - [x] Medium:
     1. [x] [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
     1. [x] [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
     1. [x] [Zigzag Conversion](https://leetcode.com/problems/zigzag-conversion/)
@@ -54,7 +54,7 @@ Repo for source controlling leetcode problems
     1. [x] [Integer to Roman](https://leetcode.com/problems/integer-to-roman/description/)
 - [] Hash Table
   - [] Easy:
-    1. [] [link]()
+    1. [x] [Majority Element](https://leetcode.com/problems/majority-element/description/)
     1. [] [link]()
     1. [] [link]()
     1. [] [link]()
