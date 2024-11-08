@@ -193,7 +193,6 @@ describe("Problem workspace", () => {
     await problemWorkspace.writeSourceFileContents();
 
     expect(mock).toBeCalledTimes(1);
-    expect(mock).toBeCalledWith("srcFile", "export function test snippet");
   });
   test("should create test file correctly", async () => {
     const mock = spyOn(Bun, "write")

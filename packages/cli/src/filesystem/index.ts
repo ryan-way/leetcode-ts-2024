@@ -1,7 +1,7 @@
 import { exists, mkdir } from "node:fs/promises";
 import { resolve } from "node:path";
 import { CliError } from "../error";
-import type { Question } from "../leetcodeclient";
+import { type Question, Type } from "../leetcodeclient";
 import { logger } from "../util";
 
 export enum Difficulty {
@@ -86,10 +86,55 @@ describe("${this.question.title}", () => {`;
 
   async writeSourceFileContents() {
     log.info("Writing source file contents");
+
+    const params = this.question.metaData.params
+      .map((param) => `${param.name}: ${this.getTypeName(param.type)}`)
+      .join(",");
+
     await Bun.write(
       this.srcFile,
-      this.question.codeSnippet.replace("function", "export function"),
+      `export function ${this.question.metaData.name}(${params}): ${this.getTypeName(this.question.metaData.return)} {
+  ${this.getDefaultValueForType(this.question.metaData.return)}
+}`,
     );
+  }
+
+  private getDefaultValueForType(type: Type): string {
+    switch (type) {
+      case Type.VOID:
+        return "";
+      case Type.BOOLEAN:
+        return "return false";
+      case Type.INTEGER:
+        return "return 0";
+      case Type.STRING:
+        return 'return ""';
+      case Type.STRING_ARRAY:
+      case Type.INTEGER_ARRAY:
+      case Type.INTEGER_2D_ARRAY:
+        return "return []";
+      default:
+        throw new Error(`Unsupported default value: ${type}`);
+    }
+  }
+
+  private getTypeName(type: Type): string {
+    switch (type) {
+      case Type.INTEGER:
+        return "number";
+      case Type.BOOLEAN:
+        return "boolean";
+      case Type.STRING:
+        return "string";
+      case Type.INTEGER_ARRAY:
+        return "number[]";
+      case Type.STRING_ARRAY:
+        return "string[]";
+      case Type.INTEGER_2D_ARRAY:
+        return "number[][]";
+      default:
+        throw new Error(`Unsupported type name: ${type}`);
+    }
   }
 }
 

@@ -67,8 +67,6 @@ export class LeetcodeClient {
 
     const question = this.mapQuestionData(result.data.question);
 
-    log.info("Content", question.content);
-    log.info("Test case", question.exampleTestcaseList);
     return question;
   }
 
@@ -101,14 +99,13 @@ export class LeetcodeClient {
           .replaceAll("&quot;", '"')
           .replaceAll(/\w+ = /g, ""),
       );
-    log.info("Input", inputs);
+
     const outputs = content
       .split("\n")
       .filter((line) => line.includes("Output:"))
       .map((line) =>
         line.replace("<strong>Output:</strong> ", "").replaceAll("&quot;", '"'),
       );
-    log.info("Output", outputs);
 
     return inputs.map((input, idx) => {
       return { input, output: outputs[idx] };

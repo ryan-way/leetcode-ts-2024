@@ -5,3 +5,5 @@ export const logger = new Logger({
   prettyLogTemplate:
     "{{dateIsoStr}} {{logLevelName}} {{name}} {{fileNameWithLine}}\t",
 });
+
+logger.settings.minLevel = 99;
