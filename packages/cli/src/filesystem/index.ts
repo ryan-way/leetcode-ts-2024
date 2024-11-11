@@ -110,6 +110,7 @@ describe("${this.question.title}", () => {`;
       case Type.STRING:
         return 'return ""';
       case Type.STRING_ARRAY:
+      case Type.STRING_2D_ARRAY:
       case Type.INTEGER_ARRAY:
       case Type.INTEGER_2D_ARRAY:
         return "return []";
@@ -132,6 +133,8 @@ describe("${this.question.title}", () => {`;
         return "string[]";
       case Type.INTEGER_2D_ARRAY:
         return "number[][]";
+      case Type.STRING_2D_ARRAY:
+        return "string[][]";
       default:
         throw new Error(`Unsupported type name: ${type}`);
     }

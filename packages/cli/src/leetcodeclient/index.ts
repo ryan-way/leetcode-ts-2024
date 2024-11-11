@@ -15,6 +15,7 @@ export enum Type {
   STRING = 4,
   STRING_ARRAY = 5,
   BOOLEAN = 6,
+  STRING_2D_ARRAY = 7,
 }
 
 export interface Parameter {
@@ -143,6 +144,8 @@ export class LeetcodeClient {
       case "string[]":
       case "list<string>":
         return Type.STRING_ARRAY;
+      case "character[][]":
+        return Type.STRING_2D_ARRAY;
       case "boolean":
         return Type.BOOLEAN;
       default:
