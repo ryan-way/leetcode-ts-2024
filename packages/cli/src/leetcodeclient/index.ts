@@ -97,6 +97,10 @@ export class LeetcodeClient {
       .map((line) =>
         line
           .replace("<strong>Input:</strong> ", "")
+          .replaceAll("<p>", "")
+          .replaceAll("</p>", "")
+          .replaceAll('<span class="example-io">', "")
+          .replaceAll("</span>", "")
           .replaceAll("&quot;", '"')
           .replaceAll(/\w+ = /g, ""),
       );
@@ -105,7 +109,13 @@ export class LeetcodeClient {
       .split("\n")
       .filter((line) => line.includes("Output:"))
       .map((line) =>
-        line.replace("<strong>Output:</strong> ", "").replaceAll("&quot;", '"'),
+        line
+          .replaceAll("<strong>Output:</strong> ", "")
+          .replaceAll("<p>", "")
+          .replaceAll("</p>", "")
+          .replaceAll('<span class="example-io">', "")
+          .replaceAll("</span>", "")
+          .replaceAll("&quot;", '"'),
       );
 
     return inputs.map((input, idx) => {
@@ -145,6 +155,7 @@ export class LeetcodeClient {
       case "list<string>":
         return Type.STRING_ARRAY;
       case "character[][]":
+      case "list<list<string>>":
         return Type.STRING_2D_ARRAY;
       case "boolean":
         return Type.BOOLEAN;
