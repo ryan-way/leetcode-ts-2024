@@ -135,6 +135,8 @@ describe("${this.question.title}", () => {`;
         return "number[][]";
       case Type.STRING_2D_ARRAY:
         return "string[][]";
+      case Type.VOID:
+        return "void";
       default:
         throw new Error(`Unsupported type name: ${type}`);
     }
