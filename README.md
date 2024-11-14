@@ -63,7 +63,7 @@ Repo for source controlling leetcode problems
     1. [x] [Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/)
     1. [x] [Valid Sudoku](https://leetcode.com/problems/valid-sudoku/description/)
     1. [x] [Group Anagrams](https://leetcode.com/problems/group-anagrams/)
-    1. [] [link]()
+    1. [x] [Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/)
     1. [] [link]()
 - [] Dynamic Programming
   - [] Easy:
