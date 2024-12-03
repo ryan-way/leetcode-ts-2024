@@ -1,5 +1,6 @@
 #!/usr/bin/env bun
 
+import { $ } from "bun";
 import { FileSystem } from "./filesystem";
 import { LeetcodeClient } from "./leetcodeclient";
 import { GraphQlClient } from "./leetcodeclient/client";
@@ -19,6 +20,8 @@ export class Cli {
       await this.fileSystem.createProblemWorkspace(question);
     await problemWorkspace.writeSourceFileContents();
     await problemWorkspace.writeTestFileContents();
+    await $`code ${problemWorkspace.srcFile}`;
+    await $`code ${problemWorkspace.testFile}`;
   }
 }
 

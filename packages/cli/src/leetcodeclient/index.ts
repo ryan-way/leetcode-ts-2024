@@ -146,6 +146,7 @@ export class LeetcodeClient {
       case "integer":
         return Type.INTEGER;
       case "integer[]":
+      case "list<integer>":
         return Type.INTEGER_ARRAY;
       case "list<list<integer>>":
       case "integer[][]":
