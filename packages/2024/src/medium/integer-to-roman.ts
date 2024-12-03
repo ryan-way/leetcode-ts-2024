@@ -1,30 +1,26 @@
+const TOKENS: [string, number][] = [
+  ["M", 1000],
+  ["CM", 900],
+  ["D", 500],
+  ["CD", 400],
+  ["C", 100],
+  ["XC", 90],
+  ["L", 50],
+  ["XL", 40],
+  ["X", 10],
+  ["IX", 9],
+  ["V", 5],
+  ["IV", 4],
+  ["I", 1],
+];
+
 export function intToRoman(num: number): string {
-  let temp = num;
-  const result: string[] = [];
-
-  const tokens: [number, string][] = [
-    [1000, "M"],
-    [900, "CM"],
-    [500, "D"],
-    [400, "CD"],
-    [100, "C"],
-    [90, "XC"],
-    [50, "L"],
-    [40, "XL"],
-    [10, "X"],
-    [9, "IX"],
-    [5, "V"],
-    [4, "IV"],
-    [1, "I"],
-  ];
-
-  for (const [value, token] of tokens) {
-    if (temp >= value) {
-      const remainder = temp % value;
-      const repeat = (temp - remainder) / value;
-      result.push(token.repeat(repeat));
-      temp = remainder;
+  let n = num;
+  return TOKENS.reduce((result, [token, value]) => {
+    if (value <= n) {
+      result.push(...Array(Math.floor(n / value)).fill(token));
+      n %= value;
     }
-  }
-  return result.join("");
+    return result;
+  }, [] as string[]).join("");
 }
