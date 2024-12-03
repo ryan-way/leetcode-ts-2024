@@ -102,7 +102,8 @@ export class LeetcodeClient {
           .replaceAll('<span class="example-io">', "")
           .replaceAll("</span>", "")
           .replaceAll("&quot;", '"')
-          .replaceAll(/\w+ = /g, ""),
+          .replaceAll(/\w+ = /g, "")
+          .replaceAll("<pre>", ""),
       );
 
     const outputs = content
@@ -115,7 +116,8 @@ export class LeetcodeClient {
           .replaceAll("</p>", "")
           .replaceAll('<span class="example-io">', "")
           .replaceAll("</span>", "")
-          .replaceAll("&quot;", '"'),
+          .replaceAll("&quot;", '"')
+          .replaceAll("<pre>", ""),
       );
 
     return inputs.map((input, idx) => {
