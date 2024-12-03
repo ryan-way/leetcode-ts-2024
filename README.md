@@ -52,7 +52,7 @@ Repo for source controlling leetcode problems
     1. [x] [Zigzag Conversion](https://leetcode.com/problems/zigzag-conversion/)
     1. [x] [String to Integer (atoi)](https://leetcode.com/problems/string-to-integer-atoi/description/)
     1. [x] [Integer to Roman](https://leetcode.com/problems/integer-to-roman/description/)
-- [] Hash Table
+- [x] Hash Table
   - [x] Easy:
     1. [x] [Majority Element](https://leetcode.com/problems/majority-element/description/)
     1. [x] [Happy Number](https://leetcode.com/problems/happy-number/description/)
@@ -66,12 +66,12 @@ Repo for source controlling leetcode problems
     1. [x] [Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/)
     1. [x] [integer-to-roman](https://leetcode.com/problems/integer-to-roman/)
 - [] Dynamic Programming
-  - [] Easy:
+  - [x] Easy:
     1. [x] [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/description/)
     1. [x] [Pascal's Triangle](https://leetcode.com/problems/pascals-triangle/description/)
-    1. [] [link]()
-    1. [] [link]()
-    1. [] [link]()
+    1. [x] [Pascal's Triangle II](https://leetcode.com/problems/pascals-triangle-ii/description/)
+    1. [x] [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+    1. [x] [Counting Bits](https://leetcode.com/problems/counting-bits/)
   - [] Medium:
     1. [] [link]()
     1. [] [link]()
