@@ -67,7 +67,7 @@ Repo for source controlling leetcode problems
     1. [x] [integer-to-roman](https://leetcode.com/problems/integer-to-roman/)
 - [] Dynamic Programming
   - [] Easy:
-    1. [] [link]()
+    1. [x] [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/description/)
     1. [] [link]()
     1. [] [link]()
     1. [] [link]()
