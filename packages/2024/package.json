@@ -2,6 +2,9 @@
   "name": "2024",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "format": "bun biome check --fix"
+  },
   "devDependencies": {
     "@types/bun": "latest",
     "cli": "workspace:*"
